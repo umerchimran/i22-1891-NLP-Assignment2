@@ -1,84 +1,97 @@
-NLP Pipeline: Word Embeddings, POS Tagging & NER
+Student ID: 22I-1891
+Name: Umer Imran
+Course: CS-4063 – Natural Language Processing
 
-This repository contains a complete Natural Language Processing pipeline implemented from scratch for CS-4063 NLP Assignment (FAST NUCES). The project includes word representation learning, sequence labeling, and evaluation using multiple neural and statistical methods.
+This repository contains my complete submission for Assignment 2 of the NLP course. The objective of this assignment was to design and implement a full neural NLP pipeline from scratch in PyTorch, covering:
 
-📌 Project Overview
+Word embeddings learning
+Sequence labeling (POS + NER)
+Transformer-based topic classification
 
-The project is divided into two main parts:
+The entire system was built on a BBC Urdu corpus, following strict constraints that required no use of pre-trained models, Gensim, HuggingFace, or built-in PyTorch Transformer modules. All components were implemented manually using raw PyTorch tensor operations.
+
+Repository Contents
+22I-1891_Assignment2_DS-C.ipynb
+Main Jupyter Notebook containing the complete implementation of all three parts of the assignment.
+22I-1891_Assignment2_Report.pdf
+Detailed report covering methodology, experimental setup, results, ablation studies, and analysis.
+cleaned.txt & raw.txt
+BBC Urdu corpus used for training and evaluation.
+Metadata.json
+Topic-category mapping used for transformer classification.
+/embeddings
+
+Contains all generated representation files:
+
+TF-IDF matrices
+PPMI co-occurrence embeddings
+Skip-gram Word2Vec embeddings (.npy)
+t-SNE visualization outputs (.png)
+/models
+
+Contains trained model checkpoints:
+
+BiLSTM POS tagger (frozen + fine-tuned versions)
+BiLSTM + CRF NER model
+Final Transformer encoder classification model
+How to Run
+1. Setup Environment
+
+Install required dependencies:
+
+pip install torch numpy matplotlib scikit-learn scipy jupyterlab
+2. Launch Notebook
+
+Run the following command in the project root:
+
+jupyter lab 22I-1891_Assignment2_DS-C.ipynb
+3. Execution Flow
+
+The notebook is structured into three main sections:
 
 Part 1: Word Embeddings
-TF-IDF based term-document representation
-PPMI (Positive Pointwise Mutual Information) word embeddings
-Skip-gram Word2Vec model (from scratch)
-Nearest neighbour analysis and analogy testing
-t-SNE visualization of word embeddings
-Part 2: Sequence Labeling
-POS Tagging using BiLSTM
-Named Entity Recognition (NER) with BiLSTM + CRF
-Frozen vs Fine-tuned embedding comparison
-Ablation study on architecture components
-📂 Project Structure
-.
-├── embeddings/
-│   ├── tfidf_matrix.npy
-│   ├── ppmi_matrix.npy
-│   ├── embeddings_w2v.npy
-│   ├── word2idx.json
-│
-├── results/
-│   ├── pos_frozen_loss.png
-│   ├── pos_finetune_loss.png
-│   ├── ner_crf_loss.png
-│   ├── ner_nocrf_loss.png
-│   ├── pos_confusion_matrix.png
-│
-├── cleaned.txt
-├── Metadata.json
-├── part1_pipeline.py
-├── part2_sequence_labeling.py
-└── README.md
-⚙️ Features
-🔹 Word Embeddings
-TF-IDF weighted representations
-PPMI co-occurrence embeddings
-Skip-gram Word2Vec (negative sampling)
-Cosine similarity-based nearest neighbours
-Word analogy evaluation
+TF-IDF and PPMI representation
+Skip-gram Word2Vec model
+Nearest neighbour & analogy evaluation
 t-SNE visualization
-🔹 Sequence Labeling
-BiLSTM-based POS tagging
-NER using BiLSTM + CRF
-Support for frozen & fine-tuned embeddings
-Dropout regularization
-Viterbi decoding for CRF
-📊 Results Summary
-POS Tagging
-Accuracy: ~99.9%
-Best performance with fine-tuned embeddings
-Strong results on NOUN and NUM tags
-NER
-Training loss converged to near zero
-CRF vs Softmax: no major improvement observed
-Poor test F1 due to dataset/annotation limitations
-Word Embeddings
-Word2Vec outperformed TF-IDF and PPMI
-PPMI struggled due to sparsity
-TF-IDF useful for keyword extraction only
-🧠 Key Insights
-Word2Vec captures strong semantic relationships
-Bidirectional LSTM improves sequence understanding
-Pretrained embeddings significantly improve convergence
-CRF helps structured prediction but depends on data quality
-🚀 How to Run
-1. Install dependencies
-pip install numpy torch scikit-learn matplotlib
-2. Run Part 1 (Embeddings)
-python part1_pipeline.py
-3. Run Part 2 (Sequence Labeling)
-python part2_sequence_labeling.py
-📌 Technologies Used
-Python
-PyTorch
-NumPy
-Scikit-learn
-Matplotlib
+Part 2: Sequence Labeling
+Rule-based POS & NER preprocessing
+BiLSTM sequence labeling
+CRF-based decoding for NER
+Frozen vs fine-tuned embeddings comparison
+Part 3: Transformer Encoder
+Scaled dot-product attention
+Multi-head attention (from scratch)
+Sinusoidal positional encoding
+4-layer Transformer encoder
+5-class topic classification
+Implementation Overview
+Part 1: Word Embeddings
+
+Implemented TF-IDF, PPMI, and Skip-gram Word2Vec from scratch to learn word representations and evaluate semantic similarity using cosine-based methods.
+
+Part 2: Sequence Labeling
+
+Built a BiLSTM-based POS and NER system with CRF decoding. Evaluated frozen vs fine-tuned embeddings and performed ablation studies.
+
+Part 3: Transformer Encoder
+
+Implemented a full Transformer encoder manually, including multi-head attention, positional encoding, and classification head for topic classification.
+
+Report & Results
+
+For detailed results, training curves, and analysis, refer to:
+
+📄 22I-1891_Assignment2_Report.pdf
+
+Notes
+No pre-trained models or external NLP frameworks were used
+All models were implemented from scratch using PyTorch
+Dataset: BBC Urdu Corpus
+Fully compliant with assignment restrictions
+Author
+
+Name: Umer Imran
+Roll Number: 22I-1891
+Course: CS-4063 – Natural Language Processing
+University: FAST NUCES
